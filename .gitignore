@@ -1,2 +1,4 @@
 server/node_modules
 server/package-lock.json
+login-service/node_modules
+login-service/package-lock.json

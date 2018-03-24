@@ -9,8 +9,6 @@ const config = require('./config');
 const app = express();
 const cors = require('cors');
 
-const webSocket = require('./helpers/webSocket');
-var web3Service = require('./services/web3.service.js');
 
 
 app.options('*', cors({maxAge: 600}));
@@ -26,7 +24,7 @@ app.use(bodyParser.urlencoded({
 app.use(errorHandler);
 
 // routes
-app.use('/api/storage', require('./routes/storage'));
+app.use('/api/login', require('./routes/auth'));
 
 /* START SERVER CODE */
 const host = config.host;
@@ -45,5 +43,3 @@ function errorHandler(err, req, res, next) {
         res.status(500).send({ Error: err })
     }
 }
-
-web3Service.setup();
