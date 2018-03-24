@@ -7,8 +7,7 @@ export class SocketService {
   private url = 'http://localhost:3000';
   private socket;
   constructor() {
-    // this.socket = io(this.url);
-
+    this.socket = io(this.url);
   }
   sendMessage(message) {
     this.socket.emit('news', message).then((res) => {
@@ -20,7 +19,7 @@ export class SocketService {
       this.socket.connect();
     }
     let observable = new Observable(observer => {
-      let onEvent = JSON.stringify({ Action: "Status" });
+      let onEvent = "status";
       this.socket.on(onEvent, (data) => {
         observer.next(data);
       })

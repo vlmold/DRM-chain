@@ -17,8 +17,9 @@ export class AppComponent {
    *
    */
   constructor(private socketService: SocketService, private authService: AuthService) {
-
+    this.subscribeOnMessages();
   }
+  
   play() {
 
   }

@@ -50,4 +50,4 @@ function errorHandler(err, req, res, next) {
 }
 
 web3Service.setup();
-webSocket.setupWebSocket();
+webSocket.setupWebSocket(server);
