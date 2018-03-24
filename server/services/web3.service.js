@@ -7,13 +7,13 @@ var defaultBarterAbi;
 var defaultBarterCode;
 var addressOwner = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
 var privateKey;
-var path = "./ethereum-contracts/build/DistributionAsset.json";
+var path = "./ethereum-contracts/build/contracts/DistributionAsset.json";
 
 
 const contractAddress = "0x66346bfd795f1e9168914e6191d209e4e9e3ac68";
 
-const agentAddress = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
-const agentPass = "owner";
+const agentAddress = "0x153f62ce2a29fe5b070ccc30b301325d2f219032";
+const agentPass = "pass";
 
 function setup() {
     if (typeof web3client !== 'undefined') {
