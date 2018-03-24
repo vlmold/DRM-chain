@@ -8,6 +8,8 @@ var ethService = require('../services/ethereum.service.js');
 
 router.get('/', function (req, res) {
    console.log('called');
+
+   //
     ethService.deploy().then((res)=>{
         console.log(res);
     })

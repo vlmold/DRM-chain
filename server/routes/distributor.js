@@ -5,6 +5,9 @@ const config = require("../config");
 
 
 router.get('/', function (req, res) {
+
+
+    /* REQUEST TO DISTRIBUTOR  */
    console.log('called');
     ethService.deploy().then((res)=>{
         console.log(res);
