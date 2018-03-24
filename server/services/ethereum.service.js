@@ -20,7 +20,7 @@ async function addView(distributor, tokenId) {
 
     console.log(unlockAccount);
 
-    let res = await web3Service.addView(["0x5656e340a0fc4581ee2acd7ec3d3f79d655de433", 1234]);
+    let res = await web3Service.addView("0x5656e340a0fc4581ee2acd7ec3d3f79d655de433", 1234);
     return res;
 }
 
