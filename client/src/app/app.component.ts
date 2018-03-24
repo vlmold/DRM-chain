@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SocketService } from '../services/socket.service';
 import { AuthService } from '../services/auth.service';
 import { Observable } from 'rxjs/Observable';
@@ -22,7 +22,11 @@ export class AppComponent {
   play() {
 
   }
+  @ViewChild('videoPlayer') videoplayer: any;
 
+  toggleVideo(event: any) {
+      this.videoplayer.nativeElement.play();
+  }
   subscribeOnMessages() {
     this.subscription = this.socketService.getMessages();
     this.subscription.subscribe((res) => {
