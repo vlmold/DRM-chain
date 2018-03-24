@@ -5,11 +5,15 @@ var defaultAbi;
 var defaultCode;
 var defaultBarterAbi;
 var defaultBarterCode;
-var addressOwner;
+var addressOwner = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
 var privateKey;
-var path = "./ethereum-contracts/build/Test.,json";
-const agentAddress = "0x153f62ce2a29fe5b070ccc30b301325d2f219032";
-const agentPass = "pass";
+var path = "./ethereum-contracts/build/DistributionAsset.json";
+
+
+const contractAddress = "0x66346bfd795f1e9168914e6191d209e4e9e3ac68";
+
+const agentAddress = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
+const agentPass = "owner";
 
 function setup() {
     if (typeof web3client !== 'undefined') {
@@ -32,12 +36,8 @@ function setup() {
 
     unlock().then((res) => {
         console.log("unlock success");
-        // TODO : GET ABI
-        let source = fs.readFileSync(path);
-        let contracts = JSON.parse(source)["contracts"];
 
-        defaultAbi = JSON.parse(contracts.Test.abi);
-        defaultCode = contracts.Test.bin;
+        defaultAbi = fs.readFileSync(path);
     })
 
 
@@ -64,6 +64,8 @@ function deploy(args) {
 }
 
 function unlock() {
+    console.log("Unlock account");
+
     return web3client.eth.personal.unlockAccount(agentAddress, agentPass);
 }
 function test(contractAddress) {
@@ -79,8 +81,32 @@ function test(contractAddress) {
 }
 
 
+function addView(addr, token){
+
+    var contract = new web3client.eth.Contract(defaultAbi, contractAddress);
+    return new Promise((resolve, reject) => {
+
+        console.log("addView contracr");
+
+        console.log(contract);
+
+        contract.methods.addProofOfView(addr, parseInt(token))
+            .call({ from: addressOwner })
+            .then(function (result) {
+                logger.debug(result);
+
+                console.log(result);
+
+                resolve(result);
+        }).catch(function (err) {
+            console.log(err);
+        });
+    })
+}
+
 
 exports.setup = setup;
 exports.deploy = deploy;
 exports.test = test;
 exports.unlock = unlock;
+exports.addView = addView;

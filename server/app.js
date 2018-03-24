@@ -49,4 +49,4 @@ function errorHandler(err, req, res, next) {
     }
 }
 
-// web3Service.setup();
+web3Service.setup();
