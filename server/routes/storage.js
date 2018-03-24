@@ -6,6 +6,7 @@ const path = require('path');
 
 router.get('/', function (req, res) {
    console.log('called');
+   
 });
 
 module.exports = router;
