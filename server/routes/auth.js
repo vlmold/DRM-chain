@@ -6,6 +6,7 @@ const gateway = require("../helpers/gateway");
 const webSocket = require("../helpers/webSocket");
 const ethereum = require("../services/ethereum.service");
 const drm = require("../services/drm.service");
+const login = require("../services/login.service");
 
 const STATUS_EVENT = "status";
 
@@ -19,7 +20,7 @@ router.get('/', function (req, res) {
     /*
        Request  to LOGIN SERVICE
     */
-    gateway.get("http://localhost:3001/api/login").then((res) => {
+    login.getCertificate().then((res) => {
 
         result = res;
 
