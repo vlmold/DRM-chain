@@ -17,13 +17,10 @@ function setupWebSocket(server) {
 }
 
 
-function emitEvent(event) {
+function emitEvent(eventType, eventData) {
     //parse payload event info
-    let eventType = JSON.parse(event.event_name);
-    let eventResult = {};
-    eventResult.eventType = eventType;
-    eventResult.payload = event.payload.toString();
-    websocket.emit(JSON.stringify(eventType), eventResult);
+    logger.log("event: ", eventType, eventData);
+    websocket.emit(eventType, eventData);
 }
 
 function emitError(error) {
@@ -33,3 +30,5 @@ function emitError(error) {
 }
 
 exports.setupWebSocket = setupWebSocket;
+exports.emitEvent = emitEvent;
+exports.emitError = emitError;
