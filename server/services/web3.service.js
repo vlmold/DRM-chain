@@ -7,7 +7,6 @@ var defaultBarterAbi;
 var defaultBarterCode;
 var addressOwner;
 var privateKey;
-var logger = require('./logger');
 var path = "./ethereum-contracts/build/Test.,json";
 const agentAddress = "0x153f62ce2a29fe5b070ccc30b301325d2f219032";
 const agentPass = "pass";
@@ -21,8 +20,8 @@ function setup() {
     }
     //
     //clear storage
-    addressOwner = owner;
-    privateKey = key;
+    // addressOwner = owner;
+    // privateKey = key;
     // fs.unlinkSync(path);
     // fs.closeSync(fs.openSync(path, 'w'));
 

@@ -8,9 +8,10 @@ var loginService = require('../services/login.service.js');
 
 router.get('/', function (req, res) {
    console.log('==============login service called==================');
+  
     loginService.getCertificate().then((result)=>{
         console.log(result);
-        res.send(result);
+        res.json(result);
     })
 });
 

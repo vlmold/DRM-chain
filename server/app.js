@@ -27,6 +27,9 @@ app.use(errorHandler);
 
 // routes
 app.use('/api/storage', require('./routes/storage'));
+app.use('/api/distributor', require('./routes/distributor'));
+app.use('/api/auth', require('./routes/auth'));
+
 
 /* START SERVER CODE */
 const host = config.host;
@@ -46,4 +49,4 @@ function errorHandler(err, req, res, next) {
     }
 }
 
-web3Service.setup();
+// web3Service.setup();
