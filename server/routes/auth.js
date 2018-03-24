@@ -11,6 +11,8 @@ const STATUS_EVENT = "status";
 
 router.get('/', function (req, res) {
 
+    console.log("/api/auth");
+
     let status = 0;
     let result = {};
 
@@ -51,7 +53,7 @@ router.get('/', function (req, res) {
         webSocket.emitEvent(STATUS_EVENT, {status: status});
 
     });
-    res.JSON(result);
+    res.json(result);
 });
 
 module.exports = router;
