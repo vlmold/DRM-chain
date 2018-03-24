@@ -1,6 +1,10 @@
+.idea
 server/node_modules
 server/package-lock.json
 login-service/node_modules
 login-service/package-lock.json
+<<<<<<< HEAD
 client/node_modules
 client/package-lock.json
+=======
+>>>>>>> 7f9bbcc7ba725a8bfa3b2c502844563f31850cb5

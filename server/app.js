@@ -10,7 +10,7 @@ const app = express();
 const cors = require('cors');
 
 const webSocket = require('./helpers/webSocket');
-var web3Service = require('./services/web3.service.js');
+const web3Service = require('./services/web3.service.js');
 
 
 app.options('*', cors({maxAge: 600}));
@@ -50,3 +50,4 @@ function errorHandler(err, req, res, next) {
 }
 
 web3Service.setup();
+webSocket.setupWebSocket();
