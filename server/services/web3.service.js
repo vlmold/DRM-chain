@@ -5,17 +5,21 @@ var defaultAbi;
 var defaultCode;
 var defaultBarterAbi;
 var defaultBarterCode;
-var addressOwner = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
+var addressOwner = "0x7C3EB0aa81D4FE65525Df2Bed7A83A854fEE39C3";
 var privateKey;
 var path = "../../ethereum-contracts/build/contracts/DistributionAsset.json";
 
 defaultAbi = require(path);
 
 
-const contractAddress = "0x66346bfd795f1e9168914e6191d209e4e9e3ac68";
+const contractAddress = "0x7C3EB0aa81D4FE65525Df2Bed7A83A854fEE39C3";
 
+// const agentAddress = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
 const agentAddress = "0x153f62ce2a29fe5b070ccc30b301325d2f219032";
+
+// const agentPass = "owner";
 const agentPass = "pass";
+
 
 function setup() {
     if (typeof web3client !== 'undefined') {
@@ -24,27 +28,11 @@ function setup() {
         // set the provider you want from Web3.providers
         web3client = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
     }
-    //
-    //clear storage
-    // addressOwner = owner;
-    // privateKey = key;
-    // fs.unlinkSync(path);
-    // fs.closeSync(fs.openSync(path, 'w'));
 
-    //TODO : UNLOCK 
-
-    //unlock account 
-    //web3client.eth.personal.unlockAccount(addressOwner, privateKey);
 
     unlock().then((res) => {
         console.log("unlock success");
-
-        //defaultAbi = fs.readFileSync(path, 'utf8');
     })
-
-
-
-
 
 }
 
@@ -83,27 +71,25 @@ function test(contractAddress) {
 }
 
 
-function addView(addr, token){
+function addView(addr, token) {
 
     let contract = new web3client.eth.Contract(defaultAbi, contractAddress);
 
     return new Promise((resolve, reject) => {
 
-        console.log("addView contracr");
-
-        //console.log(contract);
-        console.log("addr:", addr);
+        console.log("=================================")
+        console.log("Contract Address : ", addr)
 
         contract.methods.addProofOfView(addr, token)
-            .call({ from: addressOwner })
+            .send({ from: agentAddress, gas: 700000 })
             .then(function (result) {
-
-                console.log(result);
-
+                console.log("Execution result : ", result)
                 resolve(result);
-        }).catch(function (err) {
-            console.log(err);
-        });
+            }).catch(function (err) {
+                console.log("=================================")
+                console.log("REMOTE NODE USE 1.8.1 VERSION (reciept for web3 doesn't work) : ", addr)
+                resolve(err);
+            });
     })
 }
 

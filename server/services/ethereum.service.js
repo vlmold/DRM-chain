@@ -8,13 +8,6 @@ async function deploy() {
 }
 
 async function addView(distributor, tokenId) {
-    // let res = await new Promise((resolve, reject) => {
-    //    setTimeout(() => {
-    //        resolve()
-    //    }, 1000);
-    // });
-    // return res;
-    console.log("AddView service");
 
     let unlockAccount = await web3Service.unlock();
 
@@ -23,6 +16,14 @@ async function addView(distributor, tokenId) {
     let res = await web3Service.addView("0x5656e340a0fc4581ee2acd7ec3d3f79d655de433", 1234);
     return res;
 }
+async function checkView(distributor, tokenId) {
 
+    let unlockAccount = await web3Service.unlock();
+
+    console.log(unlockAccount);
+    
+    let res = await web3Service.checkView("0x5656e340a0fc4581ee2acd7ec3d3f79d655de433");
+    return res;
+}
 exports.deploy = deploy;
 exports.addView = addView;

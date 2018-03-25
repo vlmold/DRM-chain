@@ -19,40 +19,52 @@ router.post('/', function (req, res) {
 
     /*
        Request  to LOGIN SERVICE
+       
     */
+    console.log('===================================');
+    console.log('REQUEST TO LOGIN SERVICE');
     login.getCertificate().then((res) => {
 
         result = res;
+        console.log('===================================');
+        console.log('RESULT FROM LOGIN SERVICE', res);
+        console.log('===================================');
 
-        console.log('result from service', res);
 
         // UPDATE STATUS HERE  - EMIT EVENT  (WEB SOCKET) :  Request to LOGIN SERVICE
         status++;
-        webSocket.emitEvent(STATUS_EVENT, {status: status});
+        webSocket.emitEvent(STATUS_EVENT, { status: status });
 
         // CALL DRM
+        console.log('RESULT KEY FROM DRM KEY', res);
+        console.log('===================================');
+
         return drm.requestKey("megogo", 123);
     }).then((res) => {
 
-        console.log('result from service', res);
+        console.log('RESULT FROM DISTRIBUTOR', res);
+        console.log('===================================');
 
         // UPDATE STATE - EMIT  EVENT (WEB SOCKET)  STATE : Request to DRM // state++
         status++;
-        webSocket.emitEvent(STATUS_EVENT, {status: status});
+        webSocket.emitEvent(STATUS_EVENT, { status: status });
 
         // CALL TO ETHER - ADD VIEW // promise
+        console.log('REQUEST TO PRODUCTION SERVICE', res);
+        console.log('===================================');
         return ethereum.addView("megogo", 123, res);
     }).then((res) => {
-
+        console.log('RESULT FROM PRODUCTION SERVICE', res);
+        console.log('===================================');
         // UPDATE STATE - EMIT EVENT (Web socket ) : proof of giving key // state++
         status++;
-        webSocket.emitEvent(STATUS_EVENT, {status: status, data: res});
+        webSocket.emitEvent(STATUS_EVENT, { status: status, data: res });
 
         // request to CDN
         // SEND - OK
         status++;
-        webSocket.emitEvent(STATUS_EVENT, {status: status});
-
+        webSocket.emitEvent(STATUS_EVENT, { status: status });
+    
     });
     res.send("ok");
 });
