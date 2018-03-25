@@ -117,11 +117,11 @@
 
 }
 .nonstarted:hover{
-    background-image: url(/assets/img/CTRL-PLAY-hover.png);
+    background-image: url('~/assets/img/CTRL-PLAY-hover.png');
     
 }
 .nonstarted:active{
-    background-image: url(/assets/img/CTRL-PLAY-pressed.png);
+    background-image: url('~/assets/img/CTRL-PLAY-pressed.png');
     
 }
 .started{
@@ -130,7 +130,7 @@
     left: 420px;
     transform: translateY(-50%);
     background-repeat: no-repeat;
-    background-image: url(/assets/img/stop.png);
+    background-image: url('~/assets/img/stop.png');
     background-size: 100%;
     width: 120px;
     height: 120px;
