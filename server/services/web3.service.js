@@ -7,7 +7,9 @@ var defaultBarterAbi;
 var defaultBarterCode;
 var addressOwner = "0x06cad206bda3fd6c40219e1a46fe0041faee3041";
 var privateKey;
-var path = "./ethereum-contracts/build/contracts/DistributionAsset.json";
+var path = "../../ethereum-contracts/build/contracts/DistributionAsset.json";
+
+defaultAbi = require(path);
 
 
 const contractAddress = "0x66346bfd795f1e9168914e6191d209e4e9e3ac68";
@@ -37,7 +39,7 @@ function setup() {
     unlock().then((res) => {
         console.log("unlock success");
 
-        defaultAbi = fs.readFileSync(path);
+        //defaultAbi = fs.readFileSync(path, 'utf8');
     })
 
 
@@ -83,17 +85,18 @@ function test(contractAddress) {
 
 function addView(addr, token){
 
-    var contract = new web3client.eth.Contract(defaultAbi, contractAddress);
+    let contract = new web3client.eth.Contract(defaultAbi, contractAddress);
+
     return new Promise((resolve, reject) => {
 
         console.log("addView contracr");
 
-        console.log(contract);
+        //console.log(contract);
+        console.log("addr:", addr);
 
-        contract.methods.addProofOfView(addr, parseInt(token))
+        contract.methods.addProofOfView(addr, token)
             .call({ from: addressOwner })
             .then(function (result) {
-                logger.debug(result);
 
                 console.log(result);
 

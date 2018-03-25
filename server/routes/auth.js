@@ -54,7 +54,7 @@ router.get('/', function (req, res) {
         webSocket.emitEvent(STATUS_EVENT, {status: status});
 
     });
-    res.json(result);
+    res.send("ok");
 });
 
 module.exports = router;
