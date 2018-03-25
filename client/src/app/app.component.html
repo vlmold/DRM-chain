@@ -1,14 +1,41 @@
-<div class="row component-row">
-  <div class="col-5 col-offset-2 logo"></div>
-
-
-
-</div>
-<div class="row component-row">
-  <div class="col-8 col-md-offset-2">
-    <video preload="auto" ng-click="play()" (click)="toggleVideo()" #videoPlayer>
-      <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.ogg" type="video/mp4" />
-    </video>
+<div class="component-wrapper">
+  <div class="row component-row logo-wrapper">
+    <div class="logo"></div>
   </div>
+  <div class="row component-row" style="position: relative;">
+    <div class="col-12 player-wrapper">
+      <video preload="auto"  #videoPlayer class="video">
+        <source src="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_stereo.ogg#t=2" type="video/mp4" />
+      </video>
+    </div>
+    <div class="play-button-start nonstarted" *ngIf="!started" (click)="startVideo()">
 
-</div>
+    </div>
+    <div class="play-button-pause started" *ngIf="started" (click)="stopVideo()">
+
+    </div>
+
+  </div>
+  <div class="row component-row buttons-wrapper">
+    <div class="col-3 status-wrapper" [ngClass]="{'not-started-first' : status === -1 , 'process-first' : status == 0 , 'ready-first': status >= 1 }">
+      <img src="assets/img/spinner.gif" *ngIf=" status == 0" width="30px" height="30px" style="margin-top: 15px;position: absolute;margin-left: 5px;">
+      <label>Request to distributor</label>
+    </div>
+    <div class="col-3 status-wrapper" [ngClass]="{'not-started-middle' : status < 1  , 'process-middle' : status == 1 , 'ready-middle': status >= 2 }">
+        <img src="assets/img/spinner.gif" *ngIf=" status == 1" width="30px" height="30px" style="margin-top: 15px;position: absolute;margin-left: 5px;">
+      
+      <label>Request to DRM</label>
+    </div>
+    <div class="col-3 status-wrapper" [ngClass]="{'not-started-middle' : status < 2  , 'process-middle' : status == 2 , 'ready-middle': status >=3}">
+        <img src="assets/img/spinner.gif" *ngIf=" status == 2" width="30px" height="30px" style="margin-top: 15px;position: absolute;margin-left: 5px;">
+
+      <label>Proof of giving key</label>
+    </div>
+    <div class="col-3 status-wrapper" [ngClass]="{'not-started-last' : status < 3  , 'process-last' : status == 3 , 'ready-last': status >= 4 }">
+        <img src="assets/img/spinner.gif" *ngIf=" status == 3" width="30px" height="30px" style="margin-top: 15px;position: absolute;margin-left: 5px;">
+
+      <label>Request to CDN</label>
+    </div>
+
+  </div>
+</div> 

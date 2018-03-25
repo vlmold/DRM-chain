@@ -2,8 +2,141 @@
     margin: 0;
 }
 .logo{
-    height:200px;
-    background-image: url("~/assets/holly.jpg");
-    background-size: cover;
+    height: 200px;
+    background-image: url(/assets/holly.jpg);
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
+    width: 191.8px;
+  height: 36.7px;
 }
+.component-wrapper{
+    width: 960px;
+    margin-left: 480px;
+}
+.video {
+    // width: 100%;
+    width: 960px;
+    height: 540px;
+}
+.logo-wrapper{
+    margin-top: 20px;
+    margin-bottom: 17.3px;
+}
+.buttons-wrapper{
+    width: 100%;
+    height: 60px;
+}
+.status-wrapper{
+    position: relative;
+    height: 100%;
+}
+.status-wrapper label {
+    width:100%;
+    height: 19px;
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #333333;
+    position: absolute;
+    top:50%;
+    transform: translatey(-50%);
+}
+.buttons-wrapper{
+
+    background-repeat: no-repeat;
+    padding-left: 15px;
+}
+.not-started-first{
+    background-image: url('~/assets/img/Progress/progress-start.png');
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.process-first{
+    background-repeat: no-repeat;
+    background-image: url('~/assets/img/Progress/progress-start-current.png');
+    background-size: 100%;
+}
+.ready-first{
+    background-image: url('~/assets/img/Progress/progress-start-done.png');
+    background-size: 100%;
+}
+.not-started-last{
+    background-image: url('~/assets/img/Progress/progress-finish.png');
+    background-size: 97%;
+    background-repeat: no-repeat;
+}
+.process-last{
+    background-image: url('~/assets/img/Progress/progress-finish-current.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    
+}
+.ready-last{
+    background-image: url('~/assets/img/Progress/progress-finish-done.png');
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.not-started-middle{
+    background-image: url('~/assets/img/Progress/progress-intermediate.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.process-middle{
+
+    background-repeat: no-repeat;
+    background-image: url('~/assets/img/Progress/progress-intermediate-current.png');
+    background-size: 100%;
+}
+.ready-middle{
+
+    background-repeat: no-repeat;
+    background-image: url('~/assets/img/Progress/progress-intermediate-done.png');
+    background-size: 100%;
+}
+.player-wrapper{
+    position: relative;
+}
+.nonstarted{
+    position: absolute;
+    top: 50%;
+    left: 420px;
+    transform: translateY(-50%);
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/CTRL-PLAY.png);
+    background-size: 100%;
+    width: 120px;
+    height: 120px;
+
+}
+.nonstarted:hover{
+    background-image: url(/assets/img/CTRL-PLAY-hover.png);
+    
+}
+.nonstarted:active{
+    background-image: url(/assets/img/CTRL-PLAY-pressed.png);
+    
+}
+.started{
+    position: absolute;
+    top: 50%;
+    left: 420px;
+    transform: translateY(-50%);
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/stop.png);
+    background-size: 100%;
+    width: 120px;
+    height: 120px;
+    opacity: 0;
+
+}
+    .started:hover{
+       opacity: 1;
+    }

@@ -10,7 +10,7 @@ const login = require("../services/login.service");
 
 const STATUS_EVENT = "status";
 
-router.get('/', function (req, res) {
+router.post('/', function (req, res) {
 
     console.log("/api/auth");
 
